@@ -41,7 +41,7 @@ startButton.addEventListener("click", function () {
         }
 
         updateDisplay() // invochiamo la funzione che aggiorna il display
-    }, 1000)
+    }, 900)
 });
 
 // Stop button event listener
