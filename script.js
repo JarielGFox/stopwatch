@@ -36,7 +36,7 @@ startButton.addEventListener("click", function () {
             hours++
         }
 
-        if (hours === 24) {
+        if (hours === 24) { // quando le ore arrivano a 24, il contatore torna a 0
             hours = 0;
         }
 
@@ -48,28 +48,28 @@ startButton.addEventListener("click", function () {
 stopButton.addEventListener("click", function () {
     if (intervalId === null) return;
 
-    clearInterval(intervalId); // passiamo a clearInterval() intervalId come parametro, ferma il cronometro
+    clearInterval(intervalId); // cancella l'azione chiamata con setInterval(), gli si passa il parametro intervalID a cui abbiamo dato valore null
 
     intervalId = null; // resetta intervalId indicando che il cronometro è fermo
 });
 
 // Reset button event listener
 resetButton.addEventListener("click", function () {
-    if (intervalId !== null) {
+    if (intervalId === null) {
         clearInterval(intervalId);
-        intervalId = null;
+        intervalId = null; // ferma l'esecuzione di setInterval()
 
-        // timer reset
+        // dopo aver fermato l'esecuzione di setInterval() i contatori tornano a zero
 
         seconds = 0;
         minutes = 0;
         hours = 0;
 
-        display.textContent = '00:00:00';
+        time.textContent = '00:00:00'; // il "testo" del cronmometro parte da zero
     }
 });
 
-// Function to update the display
+// Convertiamo i valori dei contatori in stringhe a due cifre, aggiornando il display
 function updateDisplay() {
     const secondsStr = String(seconds).padStart(2, '0');
     const minutesStr = String(minutes).padStart(2, '0');
