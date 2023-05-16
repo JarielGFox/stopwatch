@@ -1,3 +1,15 @@
 body {
     background-color: darkslategray;
 }
+
+.brunofont {
+    font-family: 'Bruno Ace', cursive !important;
+    color: goldenrod;
+    font-weight: 400;
+    font-size: xx-large;
+}
+
+button.brunofont {
+    color: whitesmoke;
+    font-size: small;
+}
