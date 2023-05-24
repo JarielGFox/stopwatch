@@ -7,6 +7,7 @@ const stopButton = document.querySelector('#stop');
 const resetButton = document.querySelector('#reset');
 const timeRecord = document.getElementById('time-record');
 const lapButton = document.querySelector('#lap');
+const soundToggle = document.getElementById('sound-toggle');
 
 // Variabili dell'orologio
 
@@ -21,6 +22,7 @@ let intervalId = null;
 
 // Start button event listener
 startButton.addEventListener("click", function () {
+
     if (intervalId !== null) return; // se il cronometro è in funzione, non vogliamo un altro click su start per riavviarlo!
 
     // Start the interval
@@ -44,10 +46,19 @@ startButton.addEventListener("click", function () {
 
         updateDisplay() // invochiamo la funzione che aggiorna il display
     }, 900)
+
+    if (soundToggle.checked) {
+        startSound.play();
+    }
+
 });
 
 // Stop button event listener
 stopButton.addEventListener("click", function () {
+    if (soundToggle.checked) {
+        stopSound.play();
+    }
+
     if (intervalId === null) return;
 
     clearInterval(intervalId); // cancella l'azione chiamata con setInterval(), gli si passa il parametro intervalID a cui abbiamo dato valore null
@@ -60,10 +71,20 @@ lapButton.addEventListener("click", function () {
     if (intervalId !== null) {
         recordLapTime();
     }
+
+    if (soundToggle.checked) {
+        lapSound.play();
+    }
+
 });
 
 // Reset button event listener
 resetButton.addEventListener("click", function () {
+
+    if (soundToggle.checked) {
+        resetSound.play();
+    }
+
     if (intervalId === null) {
         clearInterval(intervalId);
         intervalId = null; // ferma l'esecuzione di setInterval()
