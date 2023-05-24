@@ -6,13 +6,13 @@ const startButton = document.querySelector('#start');
 const stopButton = document.querySelector('#stop');
 const resetButton = document.querySelector('#reset');
 const timeRecord = document.getElementById('time-record');
+const lapButton = document.querySelector('#lap');
 
 // Variabili dell'orologio
 
 let hours = 0;
 let minutes = 0;
 let seconds = 0;
-let recordTaken = []; // per i lap
 
 // Variabile intervallo
 
@@ -54,23 +54,12 @@ stopButton.addEventListener("click", function () {
 
     intervalId = null; // resetta intervalId indicando che il cronometro è fermo
 
-    recordTaken.push(timeRecord.textContent); // prende l'intervallo di tempo e lo spara nel recordTaken array
+});
 
-    // Aggiungiamo i "lap"
-
-    let lapTimeDiv = document.createElement('div'); // creiamo un elemento div
-    lapTimeDiv.textContent = 'Lap' + recordTaken.length + ':' + time.textContent; // numero di lap + tempo catturato
-
-    lapTimeDiv.classList.add('text-warning');
-
-    timeRecord.appendChild(lapTimeDiv);
-
-    // Manteniamo solo 3 laps mostrabili:
-
-    if (timeRecord.childElementCount >= 3) {
-        timeRecord.removeChild(timeRecord.firstChild)
+lapButton.addEventListener("click", function () {
+    if (intervalId !== null) {
+        recordLapTime();
     }
-
 });
 
 // Reset button event listener
@@ -91,20 +80,6 @@ resetButton.addEventListener("click", function () {
         while (timeRecord.firstChild) {
             timeRecord.removeChild(timeRecord.firstChild);
         }
-
-        // recordtaken diventa nuovamente un array vuoto
-        recordTaken = [];
     }
 });
-
-// Convertiamo i valori dei contatori in stringhe a due cifre, aggiornando il display
-function updateDisplay() {
-    const secondsStr = String(seconds).padStart(2, '0');
-    const minutesStr = String(minutes).padStart(2, '0');
-    const hoursStr = String(hours).padStart(2, '0');
-
-    // Aggiorna il display con il minutaggio corrente:
-
-    time.textContent = `${hoursStr}:${minutesStr}:${secondsStr}`;
-}
 

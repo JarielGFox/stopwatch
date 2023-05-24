@@ -1,0 +1,12 @@
+{
+    "short_name": "Stopwatch",
+    "name": "Pocket Stopwatch",
+    "icons": [{
+    "src": "./img/icon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+    }],
+    "theme_color": "#f71469",
+    "display": "fullscreen"
+    }
+    
