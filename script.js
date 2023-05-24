@@ -5,8 +5,9 @@ const time = document.querySelector('#time');
 const startButton = document.querySelector('#start');
 const stopButton = document.querySelector('#stop');
 const resetButton = document.querySelector('#reset');
-const timeRecord = document.getElementById('time-record');
 const lapButton = document.querySelector('#lap');
+
+const timeRecord = document.getElementById('time-record');
 const soundToggle = document.getElementById('sound-toggle');
 
 // Variabili dell'orologio
@@ -29,7 +30,7 @@ startButton.addEventListener("click", function () {
 
     intervalId = setInterval(function () {
         seconds++
-        // Usiamo doppio if perchè entrambe le condizioni possono essere veritiere allo stesso intervallo di tempo
+        // Usiamo if separati perchè entrambe le condizioni possono essere veritiere allo stesso intervallo di tempo
         if (seconds >= 60) { // quando i secondi raggiungono il 60 resettali a 0 e riparte la conta
             seconds = 0;
             minutes++;
