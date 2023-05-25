@@ -1,23 +1,26 @@
-// Variabili Display
+// Variabili display3
+const soundToggle = document.getElementById('sound-toggle');
 const display = document.getElementById('stopwatch-display');
 const time = document.getElementById('time');
 const timeRecord = document.getElementById('time-record');
-const soundToggle = document.getElementById('sound-toggle');
-// Variabili Bottoni
+const countDownInput = document.getElementById('countdown-input');
+// Variabili bottoni
 const startButton = document.getElementById('start');
 const stopButton = document.getElementById('stop');
 const resetButton = document.getElementById('reset');
 const lapButton = document.getElementById('lap');
-
+const countDownStartButton = document.getElementById('countdown-start');
+const countDownStopButton = document.getElementById('countdown-stop');
+const countDownResetButton = document.getElementById('countdown-reset');
 
 // Variabili contatori dell'orologio
 let hours = 0;
 let minutes = 0;
 let seconds = 0;
 
-// Variabile intervallo
+// Variabili intervalli (timer e countdown)
 let intervalId = null;
-
+let countDownInterval = null;
 
 // Start button event listener
 startButton.addEventListener("click", () => {
@@ -85,8 +88,8 @@ resetButton.addEventListener("click", () => {
     }
 
     if (intervalId === null) {
-        clearInterval(intervalId);
-        intervalId = null; // ferma l'esecuzione di setInterval()
+        clearInterval(intervalId); // ferma l'esecuzione di setInterval()
+        intervalId = null;
 
         // dopo aver fermato l'esecuzione di setInterval() i contatori tornano a zero
 
@@ -103,3 +106,28 @@ resetButton.addEventListener("click", () => {
     }
 });
 
+//Bottoni countdown
+
+countDownStartButton.addEventListener('click', () => {
+    let countDownTime = parseTime(countDownInput.value); // Passiamo funzione parseTime()
+
+    countDownInterval = setInterval(() => {
+        countDownTime--;
+
+        time.textContent = formatTime(countDownTime);
+
+        if (countDownTime <= 0) {
+            clearInterval(countDownInterval)
+        }
+
+    }, 900)
+})
+
+countDownStopButton.addEventListener('click', () => {
+    clearInterval(countDownInterval);
+});
+
+countDownResetButton.addEventListener('click', () => {
+    clearInterval(countDownInterval);
+    time.textContent = '00:00:00';
+});

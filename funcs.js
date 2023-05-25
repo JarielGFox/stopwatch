@@ -9,6 +9,7 @@ const updateDisplay = () => {
     time.textContent = `${hoursStr}:${minutesStr}:${secondsStr}`;
 }
 
+// Funzione per i lap
 const recordLapTime = () => {
     const lapTime = time.textContent;
     const lapElement = document.createElement('div');
@@ -20,4 +21,23 @@ const recordLapTime = () => {
     if (timeRecord.childElementCount >= 3) {
         timeRecord.removeChild(timeRecord.firstChild);
     }
+}
+
+// Funzioni del conto alla rovescia
+
+// Formato conto alla rovescia
+const formatTime = seconds => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    seconds = seconds % 60;
+
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+
+// Mappatura tempo
+const parseTime = timeString => {
+    // Split del valore, array mappato, destructuring che assegna le variabili "hours, minutes e seconds"
+    const [hours, minutes, seconds] = timeString.split(':').map(Number);
+    return hours * 3600 + minutes * 60 + seconds;
 }
