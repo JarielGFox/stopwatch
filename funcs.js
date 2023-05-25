@@ -1,5 +1,5 @@
 // Convertiamo i valori dei contatori in stringhe a due cifre, aggiornando il display
-function updateDisplay() {
+const updateDisplay = () => {
     const secondsStr = String(seconds).padStart(2, '0');
     const minutesStr = String(minutes).padStart(2, '0');
     const hoursStr = String(hours).padStart(2, '0');
@@ -9,7 +9,7 @@ function updateDisplay() {
     time.textContent = `${hoursStr}:${minutesStr}:${secondsStr}`;
 }
 
-function recordLapTime() {
+const recordLapTime = () => {
     const lapTime = time.textContent;
     const lapElement = document.createElement('div');
     lapElement.textContent = lapTime;
