@@ -11,11 +11,11 @@ const updateDisplay = () => {
 
 // Funzione per i lap
 const recordLapTime = () => {
-    const lapTime = time.textContent;
-    const lapElement = document.createElement('div');
-    lapElement.textContent = lapTime;
-    lapElement.classList.add('text-warning');
-    timeRecord.appendChild(lapElement);
+    const lapTime = time.textContent; // a lapTime diamo il valore di time.textContent
+    const lapElement = document.createElement('div'); // creiamo un elemento div "lapElement"
+    lapElement.textContent = lapTime; // nel nostro div stampiamo il valore di lapTime
+    lapElement.classList.add('text-warning'); // il testo viene stampato in giallo
+    timeRecord.appendChild(lapElement); // aggiungiamo l'elemento figlio lapElement al div timeRecord
 
     // Se ci sono più di 3 laps, sostituisce con i nuovi
     if (timeRecord.childElementCount >= 3) {
@@ -37,7 +37,7 @@ const formatTime = seconds => {
 
 // Mappatura tempo
 const parseTime = timeString => {
-    // Split del valore, array mappato, destructuring che assegna le variabili "hours, minutes e seconds"
+    // In ordine: Split del valore, array mappato, destructuring array che assegna le variabili "hours, minutes e seconds"
     const [hours, minutes, seconds] = timeString.split(':').map(Number);
     return hours * 3600 + minutes * 60 + seconds;
 }

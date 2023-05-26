@@ -18,7 +18,7 @@ let hours = 0;
 let minutes = 0;
 let seconds = 0;
 
-// Variabili intervalli (timer e countdown)
+// Variabili intervalli per il setInterval() (timer e countdown)
 let intervalId = null;
 let countDownInterval = null;
 
@@ -65,7 +65,7 @@ stopButton.addEventListener("click", () => {
 
     clearInterval(intervalId); //cancella l'azione chiamata da setInterval(), si passa il parametro intervalID a cui abbiamo dato valore null
 
-    intervalId = null; // resetta intervalId indicando che il cronometro è fermo
+    intervalId = null; // il valore torna quello originale
 
 });
 
