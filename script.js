@@ -17,6 +17,7 @@ const countDownResetButton = document.getElementById('countdown-reset');
 let hours = 0;
 let minutes = 0;
 let seconds = 0;
+let originalTime = '00:00:00';
 
 // Variabili intervalli per il setInterval() (timer e countdown)
 let intervalId = null;
@@ -87,23 +88,20 @@ resetButton.addEventListener("click", () => {
         resetSound.play();
     }
 
-    if (intervalId === null) {
-        clearInterval(intervalId); // ferma l'esecuzione di setInterval()
-        intervalId = null;
 
-        // dopo aver fermato l'esecuzione di setInterval() i contatori tornano a zero
+    clearInterval(intervalId); // ferma l'esecuzione di setInterval()
+    intervalId = null;
 
-        seconds = 0;
-        minutes = 0;
-        hours = 0;
-        // display stringa cronometro
-        time.textContent = '00:00:00';
+    // dopo aver fermato l'esecuzione di setInterval() i contatori tornano a zero
+    seconds = 0;
+    minutes = 0;
+    hours = 0;
 
-        // elimina la conta dei lap con while loop (removeChild)
-        while (timeRecord.firstChild) {
-            timeRecord.removeChild(timeRecord.firstChild);
-        }
-    }
+    // display stringa cronometro
+    time.textContent = originalTime;
+
+    // elimina la conta dei lap con while loop (removeChild)
+    timeRecord.innerHTML = '';
 });
 
 //Bottoni countdown
@@ -129,5 +127,5 @@ countDownStopButton.addEventListener('click', () => {
 
 countDownResetButton.addEventListener('click', () => {
     clearInterval(countDownInterval);
-    time.textContent = '00:00:00';
+    time.textContent = originalTime;
 });

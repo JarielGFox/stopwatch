@@ -18,8 +18,9 @@ const recordLapTime = () => {
     timeRecord.appendChild(lapElement); // aggiungiamo l'elemento figlio lapElement al div timeRecord
 
     // Se ci sono più di 3 laps, sostituisce con i nuovi
-    if (timeRecord.childElementCount >= 3) {
-        timeRecord.removeChild(timeRecord.firstChild);
+
+    while (timeRecord.childElementCount >= 4) {
+        timeRecord.removeChild(timeRecord.firstElementChild);
     }
 }
 
