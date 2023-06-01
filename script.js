@@ -22,6 +22,9 @@ let originalTime = '00:00:00';
 // Variabili intervalli per il setInterval() (timer e countdown)
 let intervalId = null;
 let countDownInterval = null;
+// Per ripristinare il conto alla rovescia
+let countDownTime;
+let remainingTime = null;
 
 // Start button event listener
 startButton.addEventListener("click", () => {
@@ -48,7 +51,7 @@ startButton.addEventListener("click", () => {
         }
 
         updateDisplay() // invochiamo la funzione che aggiorna il display
-    }, 900)
+    }, 950)
 
     if (soundToggle.checked) {
         startSound.play();
@@ -107,7 +110,7 @@ resetButton.addEventListener("click", () => {
 //Bottoni countdown
 
 countDownStartButton.addEventListener('click', () => {
-    let countDownTime = parseTime(countDownInput.value); // Passiamo funzione parseTime()
+    countDownTime = remainingTime !== null ? remainingTime : parseTime(countDownInput.value);
 
     countDownInterval = setInterval(() => {
         countDownTime--;
@@ -118,11 +121,15 @@ countDownStartButton.addEventListener('click', () => {
             clearInterval(countDownInterval)
         }
 
-    }, 900)
+        // Update countDownTime
+        countDownTime = parseTime(time.textContent);
+
+    }, 950)
 })
 
 countDownStopButton.addEventListener('click', () => {
     clearInterval(countDownInterval);
+    remainingTime = countDownTime;
 });
 
 countDownResetButton.addEventListener('click', () => {
