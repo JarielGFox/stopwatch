@@ -35,7 +35,6 @@ const formatTime = seconds => {
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
-
 // Mappatura tempo
 const parseTime = timeString => {
     // In ordine: Split del valore, array mappato, destructuring array che assegna le variabili "hours, minutes e seconds"

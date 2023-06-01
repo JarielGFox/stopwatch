@@ -1,4 +1,4 @@
-// Variabili display3
+// Variabili display
 const soundToggle = document.getElementById('sound-toggle');
 const display = document.getElementById('stopwatch-display');
 const time = document.getElementById('time');
@@ -121,7 +121,7 @@ countDownStartButton.addEventListener('click', () => {
             clearInterval(countDownInterval)
         }
 
-        // Update countDownTime
+        // Aggiorniamo la variabile countDownTime
         countDownTime = parseTime(time.textContent);
 
     }, 950)
