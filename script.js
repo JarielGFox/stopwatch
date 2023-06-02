@@ -109,9 +109,12 @@ resetButton.addEventListener("click", () => {
 
 //Bottoni countdown
 
+// Start countdown
 countDownStartButton.addEventListener('click', () => {
+    // Se remainingTime è diverso da null, se è true assegnamo a countDownTime, se false esegue parseTime() e passa countDownInput come parametro e poi assegna a countDownTime
     countDownTime = remainingTime !== null ? remainingTime : parseTime(countDownInput.value);
 
+    // Conteggio alla rovescia
     countDownInterval = setInterval(() => {
         countDownTime--;
 
