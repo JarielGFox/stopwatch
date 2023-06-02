@@ -41,3 +41,31 @@ const parseTime = timeString => {
     const [hours, minutes, seconds] = timeString.split(':').map(Number);
     return hours * 3600 + minutes * 60 + seconds;
 }
+
+// Funzione validatore
+const isValidTimeFormat = timeString => {
+    // Controlla se la stringa inserita è di 8 caratteri precisi
+    if (timeString.length !== 8) {
+        return false
+    }
+
+    // Controlla se il terzo e sesto carattere inseriti nella stringa siano due punti (0 index)
+    if (timeString[2] !== ':' || timeString[5] !== ':') {
+        return false;
+    }
+
+    for (let i = 0; i < timeString.length; i++) {
+        // Controlla se i caratteri inseriti sono diversi dal 2 e 5, che dovrebbero essere due punti
+        if (i !== 2 && i !== 5) {
+            // Controlla se i caratteri inseriti sono tra lo 0 e il 9, altrimenti ritorna false e non si esegue
+            if (timeString[i] < '0' || timeString[i] > '9') {
+                return false;
+            }
+        }
+    }
+
+    // Se tutti i test sono passati il formato è valido
+    return true;
+}
+
+

@@ -12,6 +12,8 @@ const lapButton = document.getElementById('lap');
 const countDownStartButton = document.getElementById('countdown-start');
 const countDownStopButton = document.getElementById('countdown-stop');
 const countDownResetButton = document.getElementById('countdown-reset');
+// Messaggio validazione
+const validationMessage = document.getElementById('validation-message');
 
 // Variabili contatori dell'orologio
 let hours = 0;
@@ -105,6 +107,13 @@ resetButton.addEventListener("click", () => {
 
     // elimina la conta dei lap con while loop (removeChild)
     timeRecord.innerHTML = '';
+});
+
+// Event listener per togliere il disabled dallo start button e messaggio 
+countDownInput.addEventListener('input', () => {
+    const isValid = isValidTimeFormat(countDownInput.value);
+    countDownStartButton.disabled = !isValid;
+    validationMessage.textContent = isValid ? '' : 'Please enter a valid time format (HH:MM:SS)';
 });
 
 //Bottoni countdown

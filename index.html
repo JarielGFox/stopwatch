@@ -65,8 +65,10 @@
                     <div class="card card-body bg-success" style=" width: 215px; background-color: darkslategrey;">
                         <input class="brunofont fw-semibold fs-4 text-success form-control" type="text"
                             id="countdown-input" placeholder="HH:MM:SS">
-                        <button class="brunofont mt-3 btn btn-dark" id="countdown-start">Start Countdown</button>
-                        <button class="brunofont mt-3 btn btn-danger" id="countdown-stop">Stop Countdown</button>
+                        <button class="brunofont mt-3 btn btn-dark" id="countdown-start" disabled>Start
+                            Countdown</button>
+                        <div id="validation-message" class="brunofont fs-6 mt-1 text-center text-danger bg-dark"></div>
+                        <button class="brunofont mt-2 btn btn-danger" id="countdown-stop">Stop Countdown</button>
                         <button class="brunofont mt-3 btn btn-secondary" id="countdown-reset">Reset
                             Countdown</button>
                     </div>
