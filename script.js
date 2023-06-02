@@ -138,14 +138,29 @@ countDownStartButton.addEventListener('click', () => {
         countDownTime = parseTime(time.textContent);
 
     }, 950)
+
+    if (soundToggle.checked) {
+        startSound.play();
+    }
 })
 
 countDownStopButton.addEventListener('click', () => {
+
+    if (soundToggle.checked) {
+        stopSound.play();
+    }
+
     clearInterval(countDownInterval);
     remainingTime = countDownTime;
 });
 
 countDownResetButton.addEventListener('click', () => {
+
+    if (soundToggle.checked) {
+        resetSound.play();
+    }
+
     clearInterval(countDownInterval);
     time.textContent = originalTime;
+    remainingTime = null; // Resetta remainingTime, altrimenti buggino
 });
