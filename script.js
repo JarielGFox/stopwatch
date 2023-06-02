@@ -120,10 +120,11 @@ countDownInput.addEventListener('input', () => {
 
 // Start countdown
 countDownStartButton.addEventListener('click', () => {
-    // Se remainingTime è diverso da null, se è true assegnamo a countDownTime, se false esegue parseTime() e passa countDownInput come parametro e poi assegna a countDownTime
-    countDownTime = remainingTime !== null ? remainingTime : parseTime(countDownInput.value);
+    // Se remainingTime è "not null" e countDownTime è maggiore di 0, usa remainingTime.
+    // Altrimenti, passa l'input value a parseTime().
+    countDownTime = (remainingTime !== null && countDownTime > 0) ? remainingTime : parseTime(countDownInput.value);
 
-    // Conteggio alla rovescia
+    // Countdown
     countDownInterval = setInterval(() => {
         countDownTime--;
 
@@ -133,7 +134,7 @@ countDownStartButton.addEventListener('click', () => {
             clearInterval(countDownInterval)
         }
 
-        // Aggiorniamo la variabile countDownTime
+        // Update countDownTime
         countDownTime = parseTime(time.textContent);
 
     }, 950)
